@@ -1,0 +1,49 @@
+<div classs="contatiner">
+  <div class="row">
+    <div class="col m8 offset-m2">
+      <h5>Orders</h5>
+      <table mat-table [dataSource]="orderDataSource" 
+        class="mat-elevation-z0">
+        
+        <ng-container matColumnDef="recived">
+          <th mat-header-cell *matHeaderCellDef><mat-checkbox (change)="_selectAll($event)" [checked]="selectAll"></mat-checkbox></th>
+          <td mat-cell *matCellDef="let order">
+            <mat-checkbox 
+            (change)="select($orders.indexOf(order), $event)" 
+            [checked]="selectAll || order.is_recived != null"
+            [disabled]="order.issued_by == null"></mat-checkbox>
+          </td>
+        </ng-container>
+      
+          <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let order"> {{$orders.indexOf(order)+1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ordered_by">
+              <th mat-header-cell *matHeaderCellDef>Ordered by </th>
+              <td mat-cell *matCellDef="let order"> {{order.order.first_name}} {{order.order.father_name}} </td>
+          </ng-container> 
+          
+          <ng-container matColumnDef="ordered_at">
+              <th mat-header-cell *matHeaderCellDef>Ordered at </th>
+              <td mat-cell *matCellDef="let order"> {{order.created_at}} </td>
+          </ng-container>
+        
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/ordered drugs/'+row.id"></tr>
+          
+        </table> 
+
+        <div class="row">
+          <div class="center" style="width: 100%; opacity: 0.8">
+            <h6><strong class="tertiary center">
+              <B>There is no order yet</B>
+            </strong></h6>
+          </div>
+        </div>
+    </div>
+    
+  </div>
+</div>
