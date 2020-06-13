@@ -16,32 +16,32 @@ export class PharmacyService {
   private root = RootURL;  
 
   drugAutoComplet(key: string): Observable<Drug[]>{
-    const URL = this.root+"ajax/get/pharmacy/drug/search/auto/"+key; 
+    const URL = this.root+"/ajax/get/pharmacy/drug/search/auto/"+key; 
     return this._http.get<Drug[]>(URL); 
   }
 
   prescribe(hisstroy_id, prescriptions): Observable<Prescription[]>{
-    const URL = this.root+"ajax/post/pharmacy/prescription/prescribe/"+hisstroy_id; 
+    const URL = this.root+"/ajax/post/pharmacy/prescription/prescribe/"+hisstroy_id; 
     return this._http.post<Prescription[]>(URL, {prescriptions: prescriptions}); 
   }
 
   getFrequencies():Observable<Drug_frequency[]>{
-    const URL = this.root+"ajax/get/pharmacy/drug/frequencies"; 
+    const URL = this.root+"/ajax/get/pharmacy/drug/frequencies"; 
     return this._http.get<Drug_frequency[]>(URL); 
   }
 
   getRoots():Observable<Drug_root[]>{
-    const URL = this.root+"ajax/get/pharmacy/drug/roots"; 
+    const URL = this.root+"/ajax/get/pharmacy/drug/roots"; 
     return this._http.get<Drug_root[]>(URL); 
   }
 
   getRequests(queue_id: number): Observable<Prescription[]>{
-    const URL = this.root + "ajax/get/pharmacy/prescription/requests/"+queue_id; 
+    const URL = this.root + "/ajax/get/pharmacy/prescription/requests/"+queue_id; 
     return this._http.get<Prescription[]>(URL); 
   }
 
   deliver(prescriptions: Prescription[]): Observable<Prescription[]>{
-    const URL = this.root + "ajax/update/pharmacy/deliver"; 
+    const URL = this.root + "/ajax/update/pharmacy/deliver"; 
     return this._http.put<Prescription[]>(URL,{prescriptions: prescriptions}); 
   }
 }

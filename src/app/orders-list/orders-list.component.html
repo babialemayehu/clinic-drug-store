@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col m8 offset-m2">
       <h5>Orders</h5>
-      <table mat-table [dataSource]="orderDataSource" 
+      <table mat-table [dataSource]="orderDataSource" *ngIf="($orders)?.length > 0"
         class="mat-elevation-z0">
         
         <ng-container matColumnDef="recived">
@@ -36,7 +36,7 @@
           
         </table> 
 
-        <div class="row">
+        <div class="row" *ngIf="($orders)?.length == 0">
           <div class="center" style="width: 100%; opacity: 0.8">
             <h6><strong class="tertiary center">
               <B>There is no order yet</B>

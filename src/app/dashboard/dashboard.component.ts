@@ -55,4 +55,5 @@ export class DashboardComponent implements OnInit {
       }
     ); 
   }
+  onStatus(e){}
 }
